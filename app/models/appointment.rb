@@ -4,4 +4,5 @@ class Appointment < ActiveRecord::Base
     belongs_to :patient
 
     #validations
+    validates :datetime, :location, :physician_id, :patient_id, presence: true
 end

@@ -7,4 +7,12 @@ class ApplicationController < Sinatra::Base
     get '/' do
         erb :home
     end
+
+    helpers do
+        
+    end
+
+    private
+
+    
 end

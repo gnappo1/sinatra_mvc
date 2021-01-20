@@ -1,0 +1,7 @@
+<h1>Appointments</h1>
+
+<ul>
+    <% @appointments.each do |a| %>
+        <a href="/appointments/<%= a.id%>"><%= a.datetime %> - <%= a.patient.name %> - <%= a.physician.name %></a><br>
+    <% end %>
+</ul>

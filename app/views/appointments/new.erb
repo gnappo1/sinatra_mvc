@@ -1,0 +1,8 @@
+<h1>Create a new appointment: </h1>
+
+<form action="/appointments" method="post">
+    Datetime: <input type="datetime" name="appointment[datetime]" id="datetime"/><br>
+    Location: <input type="text" name="appointment[location]" id="location"/><br>
+    <input type="hidden" name="appointment[patient_id]" value="1"/>
+    <input type="submit"/>
+</form>
