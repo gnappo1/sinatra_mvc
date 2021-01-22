@@ -2,6 +2,7 @@ class ApplicationController < Sinatra::Base
     configure do
         set :public_folder, 'public'
         set :views, 'app/views'
+        # set :show_exceptions, false
     end
 
     get '/' do
@@ -11,6 +12,10 @@ class ApplicationController < Sinatra::Base
     helpers do
         
     end
+
+    # error Sinatra::NotFound do
+    #     erb :not_found
+    # end
 
     private
 

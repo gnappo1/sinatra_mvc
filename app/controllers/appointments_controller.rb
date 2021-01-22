@@ -1,5 +1,5 @@
 class AppointmentsController < ApplicationController
-
+    #CRUD
     get '/appointments' do
         @appointments = Appointment.all.includes(:patient).order(:name).includes(:physician).order(:name)
         erb :"appointments/index"
@@ -15,18 +15,40 @@ class AppointmentsController < ApplicationController
     end
 
     get '/appointments/:id/edit' do
+        find_appointment
         erb :"appointments/edit"
     end
 
     post '/appointments' do
         @appointment = Appointment.new(params["appointment"])
-        if @appointment.save 
+        if @appointment.save
             redirect "/appointments/#{@appointment.id}"
         else
-            flash[:error] = @appointment.errors.full_messages.to_sentence
+            # flash[:error] = @appointment.errors.full_messages.to_sentence
             redirect "/appointments/new"
         end
 
+    end
+
+    patch '/appointments/:id' do
+        find_appointment
+        if @appointment.update(params["appointment"])
+
+            redirect "/appointments/#{@appointment.id}"
+        else
+            # flash[:error] = @appointment.errors.full_messages.to_sentence
+            redirect "/appointments/#{@appointment.id}/edit"
+        end
+    end
+
+    delete '/appointments/:id/delete' do
+        find_appointment
+        if @appointment.destroy
+            redirect "/appointments"
+        else
+            # flash[:error] = @appointment.errors.full_messages.to_sentence
+            redirect "/appoitnments/#{@appointment.id}"
+        end
     end
 
     private

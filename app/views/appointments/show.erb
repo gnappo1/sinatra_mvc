@@ -1,4 +1,27 @@
-<h1>Location: <%= @appointment.location %></h1>
-<h3>Physician name: <%= @appointment.physician.name%></h3>
-<h3>Patient name: <%= @appointment.patient.name %></h3>
-<h3>Datetime: <%= @appointment.datetime %></h3>
+<div class="mb-1 row justify-content-center">
+    <h1>Location: <%= @appointment.location %></h1>
+</div>
+<div class="mb-1 row">
+    <div class="col-md-4">
+        <h3>Physician name: <%= @appointment.physician.name%></h3>
+    </div>
+    <div class="col-md-4">
+        <h3>Patient name: <%= @appointment.patient.name %></h3>
+    </div>
+    <div class="col-md-4">
+        <h3>Datetime: <%= @appointment.datetime %></h3>
+    </div>
+</div>
+
+<div class="buttons row">
+    <div class="mb-1 col-5"></div>
+    <div class="mb-1 col-1">
+        <a href="/appointments/<%= @appointment.id %>/edit" class="btn btn-outline-dark btn-lg">Edit</a>
+    </div>
+    <div class="mb-1 col-6">
+        <form action="/appointments/<%= @appointment.id %>/delete" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="Destroy" role="button" class="btn btn-danger btn-lg">
+        </form>
+    </div>
+</div>

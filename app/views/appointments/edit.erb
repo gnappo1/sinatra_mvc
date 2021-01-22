@@ -1,37 +1,36 @@
-<h1>Update the appointment:</h1>
+<h1>Edit appointment: </h1>
 
-<form action="/appointments/<%= @appointment.id %>" method="post" id="app-edit-form">
-    <input type="hidden" name="_method" value="patch" />
+<form action="/appointments/<%= @appointment.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
     <div class="mb-1 row">
         <div class="col-md-1">
             <label for="datetime">Datetime</label>
         </div>
         <div class="col-md-6">
-            <input type="datetime" name="appointment[datetime]" class="form-control-md" id="datetime" value="<%=@appointment.datetime %>" />
+            <input type="datetime" name="appointment[datetime]" id="datetime" value="<%= @appointment.datetime %>" required/><br>
         </div>
     </div>
     <div class="mb-1 row">
         <div class="col-md-1">
-            <label for="location">Location</label>
+            <label for="datetime">Location</label>
         </div>
-        <div class="col-md-5">
-            <input type="text" name="appointment[location]" class="form-control-md" id="location" value="<%=@appointment.location %>" />
+        <div class="col-md-6">
+            <input type="text" name="appointment[location]" id="location" value="<%= @appointment.location %>" required/><br>
         </div>
     </div>
     <div class="mb-1 row">
         <div class="col-md-1">
-            <label for="physician_id">Physician</label>
+            <label for="datetime">Physician</label>
         </div>
-        <div class="col-md-5">
-            <select type="dropdown" name="appointment[physician_id]" class="form-control-md">
-                <% Physician.select(:name, :id).each do |physician| %>
-                    <option value="<%= physician.id%>" <%= "selected" if physician == @appointment.physician %>><%= physician.name%></option>
-                     <!-- #input type="checkbox" name="appointment[physician_id]" id="<%= @appointment.id %>" value="<%= physician.id %>" <%='checked' if physician == @appointment.physician %> ><%= physician.name %> -->
-                    <!-- input type="radio" name="appointment[physician_id]" id="<%= @appointment.id %>" value="<%= physician.id %>" <%='checked' if physician == @appointment.physician %>><%= physician.name %> -->
-                <% end %>
-            </select>
+        <div class="col-md-6">
+        <select type="dropdown" name="appointment[physician_id]" required>
+            <option value="" disabled selected>Select Physician</option>
+            <% Physician.select(:name, :id).each do |ph|%>
+                <option value="<%= ph.id %>" id="<%= ph.id %>" <%= "selected" if @appointment.physician == ph %> ><%= ph.name %></option>
+            <% end %>
+        </select>
         </div>
     </div>
-    <input type="submit" value="Update" class="form-control-sm"/>
-    <input type="hidden" name="appointment[patient_id]" value="1"/><br>
+    <input type="hidden" name="appointment[patient_id]" value="1"/>
+    <input type="submit" class="btn btn-success" value="Update" />
 </form>
