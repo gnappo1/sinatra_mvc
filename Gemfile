@@ -10,6 +10,8 @@ gem 'sinatra'
 gem 'sinatra-activerecord'
 gem 'rake'
 gem 'require_all'
+gem 'bcrypt'
+gem 'dotenv'
 # gem 'rack'
 gem 'tux' #check it out here https://github.com/cldwalker/tux
 

@@ -4,7 +4,9 @@ require './config/environment' #cannot use require_relative in config.ru with tu
 
 use Rack::MethodOverride
 
+run ApplicationController
 use PatientsController
 use PhysiciansController
+use UsersController
 use AppointmentsController
-run ApplicationController
+use SessionsController

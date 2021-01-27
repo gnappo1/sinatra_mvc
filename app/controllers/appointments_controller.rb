@@ -1,20 +1,24 @@
 class AppointmentsController < ApplicationController
     #CRUD
     get '/appointments' do
+        redirect_if_not_logged_in
         @appointments = Appointment.all.includes(:patient).order(:name).includes(:physician).order(:name)
         erb :"appointments/index"
     end
 
     get '/appointments/new' do
+        redirect_if_not_logged_in
         erb :"appointments/new"
     end
 
     get '/appointments/:id' do
+        redirect_if_not_logged_in
         find_appointment
         erb :"appointments/show"
     end
 
     get '/appointments/:id/edit' do
+        redirect_if_not_logged_in
         find_appointment
         erb :"appointments/edit"
     end
