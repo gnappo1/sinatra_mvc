@@ -9,3 +9,5 @@ In this little Sinatra MVC app we worked on:
 - Practicing with CRUD actions in the controller
 - Building view files and rendering them from the controller
 - Pre-loading associations to reduce N+1 queries (just introduced)
+- Building user authentication
+- Adding some style with Bootstrap
